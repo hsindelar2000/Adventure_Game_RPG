@@ -1,0 +1,12 @@
+1: need to figure out pointer issues
+    events.c: In function ‘combat_event’:
+    events.c:26:32: error: passing argument 1 of ‘attack’ from incompatible pointer type [-Wincompatible-pointer-types]
+    26 |                         attack(&p, &m, player_turn);
+        |                                ^~
+        |                                |
+        |                                Player **
+    In file included from events.c:6:
+    actions.h:7:21: note: expected ‘Player *’ but argument is of type ‘Player **’
+        7 | void attack(Player *p, Monster *m, bool isPlayerTurn);
+        |             ~~~~~~~~^
+    make: *** [Makefile:21: events.o] Error 1

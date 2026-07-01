@@ -1,0 +1,61 @@
+initialize player
+	char name[20];
+	int health;
+	int maxHealth;
+	int maxDamage;
+    !!add class, changes stats
+    !!
+    !!add dnd style stats, can choose class or make custom. Stats determined by class
+    !!armor
+    !!int experience gained
+
+spawn_random_moster()
+    MonsterType type;
+	char name[20];
+	int health;
+	int maxDamage;
+    !!int experience given
+    !!int armor to slightly randomize hp
+    !!items can be used by monster or dropped upon defeat (potions, weapons, armor, scrolls, etc)
+
+
+gameplay loop
+    first encounter always basic goblin
+        fight 
+        flee, chance to flee based on roll and if fail get hit
+        !!add use item
+        !!add block / defend
+        !!cast spell
+    Journey
+        view inventory
+        ??rest
+        continue
+        !!equip spells
+        !!level up
+        !!change gear
+            !!equipment slot
+                !!gear to equip
+    Random Event (combat, treasure, traps*set traps to monster?*, etc)
+        combat
+            spawn random monster
+            combat starting with player turn (might change later to randomize or use stat)
+            fight
+        treasure   
+            add random item to player inventory
+        traps
+            ouchie!
+
+while(true) {
+    first_encounter();
+
+    journey();
+    random_event() !!make struct?
+
+    switch random_event()
+        case combat
+            combat()
+        case treasure
+            treasure()
+        case trap
+            trap() (could maybe use attack() with trap set as monster struct)
+}
