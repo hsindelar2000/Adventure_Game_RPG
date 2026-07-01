@@ -23,7 +23,7 @@ void combat_event(Player *p) {
 		scanf("%d", &choice);
 
 		if (choice == 1) {
-			attack(&p, &m, player_turn);
+			attack(p, &m, player_turn);
 			player_turn = !player_turn; // Switch turns
 		}
 		else if (choice == 2) {
