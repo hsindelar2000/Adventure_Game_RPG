@@ -18,7 +18,7 @@ void ui_draw_combat_screen(Player *p, Monster *m) {
     //render player stats and action menu
     printf("\nPlayer Stats:\n");
     printf("-----------------------------------------------\n");
-    printf("  Player: %s [HP: %d/%d]\n", p->name, p->health, p->max_health);
+    printf("  Player: %s [HP: %d/%d]\n", p->name, p->health, p->maxHealth);
     printf("-----------------------------------------------\n");
     printf("  1. Attack\n");
     printf("  2. Flee\n");
