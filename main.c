@@ -35,6 +35,12 @@ int main() {
 			case STATE_REST:
 				run_rest_menu(&p1);
 
+				//check if player health is 0 after rest menu from giving up
+				if (p1.health <= 0) {
+					game_state = STATE_GAME_OVER;
+					break;
+				}
+
 				//when choose to end rest move to random event
 				game_state = STATE_RANDOM_EVENT;
 				break;
@@ -43,14 +49,16 @@ int main() {
 
 				if (p1.health <= 0) {
 					game_state = STATE_GAME_OVER;
+					break;
 				} else {
 					game_state = STATE_REST;
 				}
+			break;
+			case STATE_GAME_OVER:
+				printf("\nYour journey has come to an end.\n");
+				break;
 		}
 	}
-
-	printf("\nYour journey has come to an end.\n");
-	combat_event(&p1);
 
 	return 0;
 }
