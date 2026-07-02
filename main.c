@@ -5,6 +5,14 @@
 #include "monster.h"
 #include "dice.h"
 #include "events.h"
+#include "ui.h"
+
+typedef enum {
+	STATE_TUTORIAL,
+	STATE_REST,
+	STATE_RANDOM_EVENT,
+	STATE_GAME_OVER
+} GameState;
 
 int main() {
 
@@ -15,28 +23,28 @@ int main() {
 
 	ui_display_intro_message();
 
-	while (current_state != STATE_GAME_OVER) {
+	while (game_state != STATE_GAME_OVER) {
 
-		switch (current_state) {
+		switch (game_state) {
 
 			case STATE_TUTORIAL:
 				// pass player pointer so combat can modify player
 				run_tutorial(&p1);
-				current_state = STATE_REST;
+				game_state = STATE_REST;
 				break;
 			case STATE_REST:
 				run_rest_menu(&p1);
 
 				//when choose to end rest move to random event
-				current_state = STATE_RANDOM_EVENT;
+				game_state = STATE_RANDOM_EVENT;
 				break;
 			case STATE_RANDOM_EVENT:
 				run_random_event(&p1);
 
 				if (p1.health <= 0) {
-					current_state = STATE_GAME_OVER;
+					game_state = STATE_GAME_OVER;
 				} else {
-					current_state = STATE_REST;
+					game_state = STATE_REST;
 				}
 		}
 	}
