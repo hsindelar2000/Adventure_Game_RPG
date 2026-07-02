@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include "ui.h"
 
+void ui_clear_screen();
+void ui_draw_combat_screen(Player *p, Monster *m);
+void ui_draw_monster_art(Monster *m);
+void ui_display_intro_message();
+
 void ui_clear_screen() {
     //clear screen and send cursor to top left corner
     printf("\033[2J\033[H");
@@ -11,18 +16,23 @@ void ui_draw_combat_screen(Player *p, Monster *m) {
 
     //display enemy stats with ASCII art across top of screen
     printf("A wild %s appears!\n", m->name);
+    printf("\nMonster Stats:\n");
+    printf("-----------------------------------------------------------------------------------\n");
+    printf("  Monster: %s [HP: %d/%d]\n", m->name, m->health, m->maxHealth);
+    printf("-----------------------------------------------------------------------------------\n");
 
     //use function to insert ASCII art for monster
     ui_draw_monster_art(m);
 
     //render player stats and action menu
     printf("\nPlayer Stats:\n");
-    printf("-----------------------------------------------\n");
+    printf("-----------------------------------------------------------------------------------\n");
     printf("  Player: %s [HP: %d/%d]\n", p->name, p->health, p->maxHealth);
-    printf("-----------------------------------------------\n");
+    printf("-----------------------------------------------------------------------------------\n");
     printf("  1. Attack\n");
     printf("  2. Flee\n");
-    printf("================================================\n");
+    printf("  3. Give up\n");
+    printf("===================================================================================\n");
     printf("Choose your action: ");
 }
 
