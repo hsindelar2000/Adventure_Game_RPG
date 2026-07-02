@@ -12,6 +12,7 @@ typedef struct {
 	MonsterType type;
 	char name[20];
 	int health;
+	int maxHealth;
 	int maxDamage;
 } Monster;
 
